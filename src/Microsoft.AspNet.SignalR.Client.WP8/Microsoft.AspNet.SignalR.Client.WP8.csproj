@@ -95,6 +95,9 @@
     <Compile Include="..\Common\CommonVersionInfo.cs">
       <Link>Properties\CommonVersionInfo.cs</Link>
     </Compile>
+    <Compile Include="..\Microsoft.AspNet.SignalR.Client\CertificateSet.cs">
+      <Link>CertificateSet.cs</Link>
+    </Compile>
     <Compile Include="..\Microsoft.AspNet.SignalR.Client\HeaderDictionary.cs">
       <Link>HeaderDictionary.cs</Link>
     </Compile>

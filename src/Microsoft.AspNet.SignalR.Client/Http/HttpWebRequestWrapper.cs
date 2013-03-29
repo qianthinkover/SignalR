@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Net;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Microsoft.AspNet.SignalR.Client.Http
 {
@@ -124,6 +125,20 @@ namespace Microsoft.AspNet.SignalR.Client.Http
                     }
                 }
             }
+        }
+
+        public void AddClientCerts(ICollection<X509Certificate> certificates)
+        {
+            if (certificates == null)
+            {
+                throw new ArgumentNullException("certificates");
+            }
+#if (!WINDOWS_PHONE && !SILVERLIGHT)
+            foreach (X509Certificate cert in certificates)
+            {
+                _request.ClientCertificates.Add(cert);
+            }
+#endif
         }
     }
 }

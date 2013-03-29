@@ -63,6 +63,9 @@
     <Reference Include="System.Windows.Browser" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Microsoft.AspNet.SignalR.Client\CertificateSet.cs">
+      <Link>CertificateSet.cs</Link>
+    </Compile>
     <Compile Include="..\Microsoft.AspNet.SignalR.Client\ConnectionState.cs">
       <Link>ConnectionState.cs</Link>
     </Compile>

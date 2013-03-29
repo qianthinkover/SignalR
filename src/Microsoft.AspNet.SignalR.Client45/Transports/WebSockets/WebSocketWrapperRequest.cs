@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.Net;
 using System;
 using System.Net.WebSockets;
+using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNet.SignalR.Client.Http;
 
 namespace Microsoft.AspNet.SignalR.Client.Transports
@@ -88,6 +89,19 @@ namespace Microsoft.AspNet.SignalR.Client.Transports
             foreach (KeyValuePair<string, string> headerEntry in headers)
             {
                 _clientWebSocket.Options.SetRequestHeader(headerEntry.Key, headerEntry.Value);
+            }
+        }
+
+        public void AddClientCerts(ICollection<X509Certificate> certificates)
+        {
+            if (certificates == null)
+            {
+                throw new ArgumentNullException("certificates");
+            }
+
+            foreach (X509Certificate cert in certificates)
+            {
+                _clientWebSocket.Options.ClientCertificates.Add(cert);
             }
         }
 

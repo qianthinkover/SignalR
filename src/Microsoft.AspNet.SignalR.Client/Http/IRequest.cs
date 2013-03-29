@@ -3,6 +3,9 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net;
+#if !NETFX_CORE
+using System.Security.Cryptography.X509Certificates;
+#endif
 
 namespace Microsoft.AspNet.SignalR.Client.Http
 {
@@ -48,5 +51,13 @@ namespace Microsoft.AspNet.SignalR.Client.Http
         /// </summary>
         /// <param name="headers">request headers</param>
         void SetRequestHeaders(IDictionary<string, string> headers);
+
+#if !NETFX_CORE
+        /// <summary>
+        /// Sets client certificates
+        /// </summary>
+        /// <param name="certificates"></param>
+        void AddClientCerts(ICollection<X509Certificate> certificates);
+#endif
     }
 }

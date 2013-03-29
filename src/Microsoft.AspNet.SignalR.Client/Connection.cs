@@ -18,6 +18,9 @@ using Microsoft.AspNet.SignalR.Client.Transports;
 using Microsoft.AspNet.SignalR.Infrastructure;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+#if !NETFX_CORE
+using System.Security.Cryptography.X509Certificates;
+#endif
 
 namespace Microsoft.AspNet.SignalR.Client
 {
@@ -151,7 +154,10 @@ namespace Microsoft.AspNet.SignalR.Client
             TraceLevel = TraceLevels.All;
             TraceWriter = new DebugTextWriter();
             Headers = new HeaderDictionary(this);
-        }
+#if !NETFX_CORE
+            ClientCertificates = new CertificateSet(this);
+#endif
+            }
 
         /// <summary>
         /// Object to store the various keep alive timeout values
@@ -221,6 +227,10 @@ namespace Microsoft.AspNet.SignalR.Client
         /// Gets and sets headers for the requests
         /// </summary>
         public IDictionary<string, string> Headers { get; private set; }
+
+#if !NETFX_CORE
+        public ICollection<X509Certificate> ClientCertificates { get; private set; }
+#endif
 
 #if !SILVERLIGHT
         /// <summary>

@@ -64,6 +64,7 @@
     <Compile Include="..\Microsoft.AspNet.SignalR.Core\TaskAsyncHelper.cs">
       <Link>Infrastructure\TaskAsyncHelper.cs</Link>
     </Compile>
+    <Compile Include="CertificateSet.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="ConnectionExtensions.cs" />
     <Compile Include="HeaderDictionary.cs" />
